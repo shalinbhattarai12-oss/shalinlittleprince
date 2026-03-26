@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Choose your path Dr.k!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #cfe8ff, #e6f4ff);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      width: 85%;
+      max-width: 750px;
+      margin: 50px auto;
+      background-color: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      color: #2b2d42;
+      margin-bottom: 25px;
+      font-size: 36px;
+    }
+
+    #story {
+      font-size: 20px;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 14px 22px;
+      margin: 10px;
+      font-size: 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(74, 144, 226, 0.25);
+    }
+
+    button:hover {
+      background-color: #357abd;
+      transform: translateY(-2px);
+    }
+
+    #buttons {
+      margin-top: 20px;
+    }
+
+    .lesson {
+      color: #1d3557;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Choose your path Dr.k!</h1>
+    <div id="story"></div>
+    <div id="buttons"></div>
+  </div>
+
+  <script>
+    function showScene(text, choices) {
+      document.getElementById("story").innerHTML = text;
+
+      let buttonsHTML = "";
+      for (let i = 0; i < choices.length; i++) {
+        buttonsHTML += "<button onclick='" + choices[i].next + "()'>" + choices[i].text + "</button>";
+      }
+      document.getElementById("buttons").innerHTML = buttonsHTML;
+    }
+
+    function start() {
+      showScene(
+        "Jay sits in his room with his phone in his hand.<br><br>" +
+        "He just posted a new video and keeps staring at the screen.<br><br>" +
+        "\"Come on... go up,\" he whispers.<br><br>" +
+        "200 views... 210... 215...<br><br>" +
+        "Jay sighs. \"Why am I not blowing up yet?\"<br><br>" +
+        "His friend Alex walks in and sees him refreshing again and again.<br><br>" +
+        "\"You’ve been doing that forever,\" Alex says.<br><br>" +
+        "What should Jay do?",
+        [
+          {text: "Keep checking views", next: "checkViews"},
+          {text: "Make a video he actually enjoys", next: "makeVideo"}
+        ]
+      );
+    }
+
+    function checkViews() {
+      showScene(
+        "Jay keeps refreshing his phone non-stop.<br><br>" +
+        "300 views... 400... 520...<br><br>" +
+        "\"Yes! It’s going up!\" he says, but he still doesn’t look happy.<br><br>" +
+        "Alex watches him quietly.<br><br>" +
+        "\"You don’t even smile anymore when you make videos,\" Alex says.<br><br>" +
+        "Jay shrugs. \"It doesn’t matter. The numbers matter.\"<br><br>" +
+        "\"Do they really make you happy?\" Alex asks.<br><br>" +
+        "Jay looks back at his phone.",
+        [
+          {text: "Ignore Alex and keep chasing numbers", next: "ending1"},
+          {text: "Stop and listen to Alex", next: "park"}
+        ]
+      );
+    }
+
+    function makeVideo() {
+      showScene(
+        "Jay puts his phone down and opens his camera.<br><br>" +
+        "He starts thinking about the kind of videos he used to love making.<br><br>" +
+        "Back then, he laughed more and cared less about who was watching.<br><br>" +
+        "He begins recording something real that actually means something to him.<br><br>" +
+        "Then his phone buzzes.<br><br>" +
+        "The other video still isn’t getting many views.",
+        [
+          {text: "Go back to checking views", next: "checkViews"},
+          {text: "Ignore it and keep creating", next: "ending3"}
+        ]
+      );
+    }
+
+    function park() {
+      showScene(
+        "Jay finally puts his phone away and goes outside with Alex.<br><br>" +
+        "They sit on a bench in the park.<br><br>" +
+        "For the first time all day, Jay isn’t staring at numbers.<br><br>" +
+        "\"You used to enjoy this,\" Alex says.<br><br>" +
+        "\"Now all you do is count views like they mean everything.\"<br><br>" +
+        "Jay looks down at his phone, then up at the sky.<br><br>" +
+        "\"I don’t even feel happy anymore,\" he says quietly.",
+        [
+          {text: "Say numbers still matter more", next: "ending2"},
+          {text: "Decide to change and be patient", next: "ending3"}
+        ]
+      );
+    }
+
+    function ending1() {
+      showScene(
+        "Jay keeps chasing numbers every day.<br><br>" +
+        "His views get bigger and bigger.<br><br>" +
+        "But no matter how high they go, it never feels like enough.<br><br>" +
+        "He sits alone, refreshing his phone again.<br><br>" +
+        "<span class='lesson'>Lesson: When you only chase numbers, you can lose what really matters.</span>",
+        [
+          {text: "Restart", next: "start"}
+        ]
+      );
+    }
+
+    function ending2() {
+      showScene(
+        "Jay ignores everything Alex said and goes back to his room.<br><br>" +
+        "Days pass, then weeks.<br><br>" +
+        "He gets more views and more followers.<br><br>" +
+        "But inside, he feels emptier than ever.<br><br>" +
+        "Nothing feels exciting anymore.<br><br>" +
+        "<span class='lesson'>Lesson: You can have everything on the outside and still feel empty inside.</span>",
+        [
+          {text: "Restart", next: "start"}
+        ]
+      );
+    }
+
+    function ending3() {
+      showScene(
+        "Jay decides to stop focusing on numbers.<br><br>" +
+        "He starts making videos that actually mean something to him.<br><br>" +
+        "At first, the views are low.<br><br>" +
+        "But for the first time in a long time, he smiles while recording.<br><br>" +
+        "Slowly, people begin to notice how real he is.<br><br>" +
+        "<span class='lesson'>Lesson: Be patient. Real success takes time, but it feels more worth it.</span>",
+        [
+          {text: "Restart", next: "start"}
+        ]
+      );
+    }
+
+    start();
+  </script>
+
+</body>
+</html>
